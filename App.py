@@ -36,7 +36,7 @@ def extract_data_with_ai(text, prompt_instruction):
         return None """
     
     #chat = ChatOpenAI(temperature=0, openai_api_key=api_key, model="gpt-5.4") # Recomendado gpt-4o ou gpt-3.5-turbo
-    chat = ChatOpenAI(temperature=0, openai_api_key=OPENAI_API_KEY, model="gpt-5.4")
+    chat = ChatOpenAI(temperature=0, openai_api_key=OPENAI_API_KEY, model="gpt-4.1")
     system_message = SystemMessage(content="""
         Você é um assistente especializado em estruturar dados de documentos.
         Extraia as informações do PDF fornecido e retorne APENAS um JSON válido.
