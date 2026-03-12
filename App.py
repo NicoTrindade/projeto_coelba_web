@@ -2,6 +2,13 @@ import streamlit as st
 import pdfplumber
 import pandas as pd
 import io
+from dotenv import load_dotenv
+import os
+
+# Carrega as variáveis do arquivo .env
+load_dotenv()
+
+OPENAI_API_KEY = os.getenv("SECRET_KEY")
 
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
@@ -19,16 +26,17 @@ st.markdown("Faça upload de um PDF (fatura/relatório) para extrair dados estru
 
 # --- Configuração da OpenAI (IA) ---
 # Dica: Use streamlit secrets para gerenciar API Keys em produção
-api_key = st.sidebar.text_input("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", type="password")
+
+#api_key = st.sidebar.text_input(OPENAI_API_KEY, type="password")
 
 # --- Função de Extração com IA ---
 def extract_data_with_ai(text, prompt_instruction):
-    if not api_key:
+    """ if not api_key:
         st.error("Por favor, insira sua OpenAI API Key na barra lateral.")
-        return None
+        return None """
     
-    chat = ChatOpenAI(temperature=0, openai_api_key=api_key, model="gpt-5.4") # Recomendado gpt-4o ou gpt-3.5-turbo
-    
+    #chat = ChatOpenAI(temperature=0, openai_api_key=api_key, model="gpt-5.4") # Recomendado gpt-4o ou gpt-3.5-turbo
+    chat = ChatOpenAI(temperature=0, openai_api_key=OPENAI_API_KEY, model="gpt-5.4")
     system_message = SystemMessage(content="""
         Você é um assistente especializado em estruturar dados de documentos.
         Extraia as informações do PDF fornecido e retorne APENAS um JSON válido.
