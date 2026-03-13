@@ -37,6 +37,8 @@ def extract_data_with_ai(text, prompt_instruction):
         st.error("Por favor, insira sua OpenAI API Key na barra lateral.")
         return None """
     
+    print("Api_Key: ",api_key)
+
     #chat = ChatOpenAI(temperature=0, openai_api_key=api_key, model="gpt-5.4") # Recomendado gpt-4o ou gpt-3.5-turbo
     chat = ChatOpenAI(temperature=0, openai_api_key=api_key, model="gpt-5.4")
     system_message = SystemMessage(content="""
