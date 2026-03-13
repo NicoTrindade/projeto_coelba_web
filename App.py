@@ -8,7 +8,7 @@ import os
 # Carrega as variáveis do arquivo .env
 load_dotenv()
 
-OPENAI_API_KEY = os.getenv("SECRET_KEY")
+api_key = os.getenv("SECRET_KEY")
 
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
@@ -36,7 +36,7 @@ def extract_data_with_ai(text, prompt_instruction):
         return None """
     
     #chat = ChatOpenAI(temperature=0, openai_api_key=api_key, model="gpt-5.4") # Recomendado gpt-4o ou gpt-3.5-turbo
-    chat = ChatOpenAI(temperature=0, openai_api_key=OPENAI_API_KEY, model="gpt-4.1")
+    chat = ChatOpenAI(temperature=0, openai_api_key=api_key, model="gpt-5.4")
     system_message = SystemMessage(content="""
         Você é um assistente especializado em estruturar dados de documentos.
         Extraia as informações do PDF fornecido e retorne APENAS um JSON válido.
