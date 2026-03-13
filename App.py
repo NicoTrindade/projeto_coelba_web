@@ -8,7 +8,9 @@ import os
 # Carrega as variáveis do arquivo .env
 load_dotenv()
 
-api_key = os.getenv("SECRET_KEY")
+#api_key = os.getenv("SECRET_KEY")
+
+api_key = os.environ.get("OPENAI_API_KEY")
 
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
